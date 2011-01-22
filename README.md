@@ -1,23 +1,25 @@
 #Rails Ready
-##Get a full Ruby on Rails stack up in one line :)
+##Get a full Ruby on Rails and PHP stack up in one line :)
 
-##Run this on a fresh install. Tested on Ubuntu server 10.04 lts
+Run this on a fresh install. Tested on Ubuntu server 10.04 lts && 10.10
 
 ##To run:
-  * sudo apt-get -y install curl && curl https://github.com/joshfng/railsready/raw/master/railsready.sh >> railsready.sh && chmod a+x railsready.sh && ./railsready.sh
+  * sudo apt-get -y install curl && curl https://github.com/danharper/railsready/raw/master/railsready.sh >> railsready.sh && chmod a+x railsready.sh && ./railsready.sh
   * The script will ask if you want to build Ruby from source or install RVM
   * If you want to watch the magic happen run "tail -f ~/railsready/install.log"
 
 ##What this gives you:
 
   * An updated system
+  * Apache 2
+  * PHP 5.3.5
+  * MySQL server 5.5
   * Ruby 1.9.2p136 (installed to /usr/local/bin/ruby) or RVM running 1.9.2p136
+  * OpenSSH server
   * Imagemagick
   * libs needed to run Rails (sqlite, mysql, etc)
   * Bundler, Passenger, and Rails gems
   * Git
-
-Just install a NGINX or Apache, run passenger-install-nginx-module or passenger-install-apache-module, upload your app, point your vhost config to your apps public dir and go!
 
 Please note: If you are running on a super slow connection your sudo session may timeout and you'll have to enter your password again. If you're running this on an EC2 or RS instance it shouldn't be problem.
 
