@@ -1,8 +1,8 @@
-##Get a full Ruby on Rails and PHP stack up in one line :)
+###Get a full Ruby on Rails and PHP stack up in one line :)
 
 Run this on a fresh install. Tested on Ubuntu server 10.04 lts && 10.10
 
-##To run:
+###To run:
   * sudo apt-get -y install curl && curl https://github.com/danharper/railsready/raw/master/railsready.sh >> railsready.sh && chmod a+x railsready.sh && ./railsready.sh
   * The script will ask if you want to build Ruby from source or install RVM
   * If you want to watch the magic happen run "tail -f ~/railsready/install.log"
