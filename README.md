@@ -1,4 +1,3 @@
-#Rails Ready
 ##Get a full Ruby on Rails and PHP stack up in one line :)
 
 Run this on a fresh install. Tested on Ubuntu server 10.04 lts && 10.10
