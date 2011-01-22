@@ -41,15 +41,35 @@ echo "done.."
 echo "Installing build tools..."
 sudo apt-get -y install \
     wget curl build-essential \
-    bison openssl zlib1g \
+    bison openssl zlib1g zlib1g-dev \
     libxslt1.1 libssl-dev libxslt1-dev \
     libxml2 libffi-dev libyaml-dev \
     libxslt-dev autoconf libc6-dev \
     libreadline6-dev zlib1g-dev >> install.log
 echo "done..."
 
+echo "Installing SSH server..."
+sudo apt-get -y install openssh-client openssh-server >> install.log
+echo "done..."
+
+echo "Installing Apache web server..."
+sudo apt-get -y install apache2 >> install.log
+echo "done..."
+
+echo "Installing PHP..."
+sudo apt-get -y install php5 >> install.log
+echo "done..."
+
 echo "Installing libs needed for sqlite and mysql..."
 sudo apt-get -y install libsqlite3-0 sqlite3 libsqlite3-dev libmysqlclient16-dev libmysqlclient16 >> install.log
+echo "done..."
+
+echo "Installing MySQL server (you will be prompted for to provide a password for your MySQL root user)"
+sudo apt-get -y install mysql-server mysql-client >> install.log
+echo "done..."
+
+echo "Setting up PHP and Apache to work with MySQL..."
+sudo apt-get -y install libapache2-mod-auth-mysql php5-mysql >> install.log
 echo "done..."
 
 # Install imagemagick
