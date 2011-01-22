@@ -4,6 +4,7 @@
 # Licence: MIT
 #
 # Contributions from: Wayne E. Seguin <wayneeseguin@gmail.com>
+# Apache, PHP, MySQL and SSH supported by: Dan Harper <danharper>
 #
 
 shopt -s extglob
