@@ -3,7 +3,7 @@
 Run this on a fresh install. Tested on Ubuntu server 10.04 lts && 10.10
 
 ###To run:
-    sudo apt-get -y install curl && curl https://github.com/danharper/onelineserver/raw/master/railsready.sh >> railsready.sh && chmod a+x railsready.sh && ./railsready.sh
+    sudo apt-get -y install curl && curl https://raw.github.com/deanperry/onelineserver/master/railsready.sh >> railsready.sh && chmod a+x railsready.sh && ./railsready.sh
   * The script will ask if you want to build Ruby from source or install RVM
   * If you want to watch the magic happen run "tail -f ~/railsready/install.log"
 
