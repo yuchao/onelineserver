@@ -139,3 +139,5 @@ echo "done..."
 echo "Installation is complete!"
 
 echo "run source ~/.bashrc or logout and back in to access Ruby"
+
+echo "To setup Passenger with Apache2, run passenger-install-apache2-module"
