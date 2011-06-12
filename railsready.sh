@@ -5,6 +5,7 @@
 #
 # Contributions from: Wayne E. Seguin <wayneeseguin@gmail.com>
 # Apache, PHP, MySQL and SSH supported by: Dan Harper <danharper>
+# Added some extra stuff like the Passenger Apache2 Module pre-reqs  <deanperry>
 #
 
 shopt -s extglob
