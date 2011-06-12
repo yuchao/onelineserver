@@ -83,6 +83,12 @@ echo "Installing git..."
 sudo apt-get -y install git-core >> install.log
 echo "done..."
 
+# Install prerequisites for Passenger Apache2 Module
+echo "Installing prerequisites for the Passenger Apache2 Module"
+apt-get install -y libcurl4-openssl-dev apache2-prefork-dev libapr1-dev >> install.log
+echo "done..."
+
+
 if [ $whichRuby -eq 1 ] ; then
   # Install Ruby
   echo "Downloading Ruby 1.9.2p136"
