@@ -86,7 +86,7 @@ echo "done..."
 
 # Install prerequisites for Passenger Apache2 Module
 echo "Installing prerequisites for the Passenger Apache2 Module"
-apt-get install -y libcurl4-openssl-dev apache2-prefork-dev libapr1-dev >> install.log
+sudo apt-get install -y libcurl4-openssl-dev apache2-prefork-dev libapr1-dev >> install.log
 echo "done..."
 
 
