@@ -67,7 +67,7 @@ sudo apt-get -y install libsqlite3-0 sqlite3 libsqlite3-dev libmysqlclient16-dev
 echo "done..."
 
 echo "Installing MySQL server (you will be prompted for to provide a password for your MySQL root user)"
-sudo apt-get install mysql-server mysql-client
+sudo apt-get -y install mysql-server mysql-client
 echo "done..."
 
 echo "Setting up PHP and Apache to work with MySQL..."
