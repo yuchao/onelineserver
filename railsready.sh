@@ -92,14 +92,14 @@ echo "done..."
 
 if [ $whichRuby -eq 1 ] ; then
   # Install Ruby
-  echo "Downloading Ruby 1.9.2p180"
-  cd src && wget ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.2-p180.tar.gz
+  echo "Downloading Ruby 1.9.2p290"
+  cd src && wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.2-p290.tar.gz
   echo "done..."
-  echo "Extracting Ruby 1.9.2p180"
-  tar -xzf ruby-1.9.2-p180.tar.gz >> ~/railsready/install.log
+  echo "Extracting Ruby 1.9.2p290"
+  tar -xzf ruby-1.9.2-p290.tar.gz >> ~/railsready/install.log
   echo "done..."
-  echo "Building Ruby 1.9.2p180 (this may take awhile and build output may appear on screen)..."
-  cd  ruby-1.9.2-p180 && ./configure --prefix=/usr/local >> ~/railsready/install.log && make >> ~/railsready/install.log && sudo make install >> ~/railsready/install.log
+  echo "Building Ruby 1.9.2p290 (this may take awhile and build output may appear on screen)..."
+  cd  ruby-1.9.2-p290 && ./configure --prefix=/usr/local >> ~/railsready/install.log && make >> ~/railsready/install.log && sudo make install >> ~/railsready/install.log
   echo "done..."
 elif [ $whichRuby -eq 2 ] ; then
   #thanks wayneeseguin :)
