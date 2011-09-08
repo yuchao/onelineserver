@@ -13,7 +13,7 @@ Run this on a fresh install. Tested on Ubuntu server 10.04 lts && 10.10
   * Apache 2
   * PHP 5.3.5
   * MySQL server 5.5
-  * Ruby 1.9.2p180 (installed to /usr/local/bin/ruby) or RVM running 1.9.2p180
+  * Ruby 1.9.2p290 (installed to /usr/local/bin/ruby) or RVM running 1.9.2p290
   * OpenSSH server
   * Imagemagick
   * libs needed to run Rails (sqlite, mysql, etc)
