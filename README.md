@@ -1,11 +1,16 @@
 ###Get a full Ruby on Rails and PHP stack up in one line :)
 
-Run this on a fresh install. Tested on Ubuntu server 10.04 lts && 10.10
+Run this on a fresh install. Tested on Ubuntu server 10.04 lts && 10.10 && 11.10
 
-###To run:
-    sudo apt-get -y install curl && curl https://raw.github.com/deanperry/onelineserver/master/railsready.sh >> railsready.sh && chmod a+x railsready.sh && ./railsready.sh
-  * The script will ask if you want to build Ruby from source or install RVM
-  * If you want to watch the magic happen run "tail -f ~/railsready/install.log"
+###Ruby 1.9.2
+    sudo apt-get -y install curl && curl https://raw.github.com/deanperry/onelineserver/master/railsready-ruby192.sh >> railsready-ruby192.sh && chmod a+x railsready-ruby192.sh && ./railsready-ruby192.sh
+* The script will ask if you want to build Ruby from source or install RVM
+* If you want to watch the magic happen run "tail -f ~/railsready-ruby192/install.log"
+
+###Ruby 1.9.3
+    sudo apt-get -y install curl && curl https://raw.github.com/deanperry/onelineserver/master/railsready-ruby193.sh >> railsready-ruby193.sh && chmod a+x railsready-ruby193.sh && ./railsready-ruby193.sh
+* The script will ask if you want to build Ruby from source or install RVM
+* If you want to watch the magic happen run "tail -f ~/railsready-ruby193/install.log"
 
 ##What this gives you:
 
@@ -13,7 +18,7 @@ Run this on a fresh install. Tested on Ubuntu server 10.04 lts && 10.10
   * Apache 2
   * PHP 5.3.5
   * MySQL server 5.5
-  * Ruby 1.9.2p290 (installed to /usr/local/bin/ruby) or RVM running 1.9.2p290
+  * Ruby 1.9.2p290 or Ruby 1.9.3p0 or RVM running 1.9.2p290 or 1.9.3p0
   * OpenSSH server
   * Imagemagick
   * libs needed to run Rails (sqlite, mysql, etc)
