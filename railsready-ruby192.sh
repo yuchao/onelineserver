@@ -14,6 +14,8 @@ set -e
 # Check if the user has sudo privileges.
 sudo -v >/dev/null 2>&1 || { echo $(whoami) has no sudo privileges ; exit 1; }
 
+echo "This script installs Ruby 1.9.2p290 along with the latest version of Apache, PHP, MySQL Server, Imagemagick, Git, Rails, Bundler and Passenger "
+
 # Ask if you want to build Ruby or install RVM
 echo "Build Ruby or install RVM?"
 echo "1. Build from souce"
@@ -31,7 +33,7 @@ else
 fi
 
 echo "Creating install dir..."
-cd && mkdir -p railsready/src && cd railsready && touch install.log
+cd && mkdir -p railsready-ruby192/src && cd railsready-ruby192 && touch install.log
 echo "done.."
 
 # Update the system before going any further
@@ -96,17 +98,17 @@ if [ $whichRuby -eq 1 ] ; then
   cd src && wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.2-p290.tar.gz
   echo "done..."
   echo "Extracting Ruby 1.9.2p290"
-  tar -xzf ruby-1.9.2-p290.tar.gz >> ~/railsready/install.log
+  tar -xzf ruby-1.9.2-p290.tar.gz >> ~/railsready-ruby192/install.log
   echo "done..."
   echo "Building Ruby 1.9.2p290 (this may take awhile and build output may appear on screen)..."
-  cd  ruby-1.9.2-p290 && ./configure --prefix=/usr/local >> ~/railsready/install.log && make >> ~/railsready/install.log && sudo make install >> ~/railsready/install.log
+  cd  ruby-1.9.2-p290 && ./configure --prefix=/usr/local >> ~/railsready-ruby192/install.log && make >> ~/railsready-ruby192/install.log && sudo make install >> ~/railsready-ruby192/install.log
   echo "done..."
 elif [ $whichRuby -eq 2 ] ; then
   #thanks wayneeseguin :)
   echo "Installing RVM the Ruby environment Manager http://rvm.beginrescueend.com/rvm/install/"
   curl -O -L http://rvm.beginrescueend.com/releases/rvm-install-head
   chmod +x rvm-install-head
-  "$PWD/rvm-install-head" >> ~/railsready/install.log
+  "$PWD/rvm-install-head" >> ~/railsready-ruby192/install.log
   [[ -f rvm-install-head ]] && rm -f rvm-install-head
   echo "Setting up RVM to load with new shells."
   echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> "$HOME/.bashrc"
@@ -115,7 +117,7 @@ elif [ $whichRuby -eq 2 ] ; then
   source ~/.bashrc
   echo "Installing Ruby 1.9.2 (this will take awhile)"
   echo "More information about installing rubies can be found at http://rvm.beginrescueend.com/rubies/installing/"
-  rvm install 1.9.2 >> ~/railsready/install.log
+  rvm install 1.9.2 >> ~/railsready-ruby192/install.log
   echo "Using 1.9.2 and setting it as default for new shells"
   echo "More information about Rubies can be found at http://rvm.beginrescueend.com/rubies/default/"
   rvm --default use 1.9.2
@@ -131,9 +133,9 @@ echo "done..."
 
 echo "Installing Bundler, Passenger and Rails.."
 if [ $whichRuby -eq 1 ] ; then
-  sudo gem install bundler passenger rails --no-ri --no-rdoc >> ~/railsready/install.log
+  sudo gem install bundler passenger rails --no-ri --no-rdoc >> ~/railsready-ruby192/install.log
 elif [ $whichRuby -eq 2 ] ; then
-  gem install bundler passenger rails --no-ri --no-rdoc >> ~/railsready/install.log
+  gem install bundler passenger rails --no-ri --no-rdoc >> ~/railsready-ruby192/install.log
 fi
 echo "done..."
 
