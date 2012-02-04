@@ -4,13 +4,25 @@ Run this on a fresh install. Tested on Ubuntu server 10.04 lts && 10.10 && 11.10
 
 ###Ruby 1.9.2
     sudo apt-get -y install curl && curl https://raw.github.com/deanperry/onelineserver/master/railsready-ruby192.sh >> railsready-ruby192.sh && chmod a+x railsready-ruby192.sh && ./railsready-ruby192.sh
-* The script will ask if you want to build Ruby from source or install RVM
+* This will install Ruby from source
 * If you want to watch the magic happen run "tail -f ~/railsready-ruby192/install.log"
 
 ###Ruby 1.9.3
     sudo apt-get -y install curl && curl https://raw.github.com/deanperry/onelineserver/master/railsready-ruby193.sh >> railsready-ruby193.sh && chmod a+x railsready-ruby193.sh && ./railsready-ruby193.sh
-* The script will ask if you want to build Ruby from source or install RVM
+* This will install Ruby from source
 * If you want to watch the magic happen run "tail -f ~/railsready-ruby193/install.log"
+
+
+###Ruby 1.9.2 RVM
+    sudo apt-get -y install curl && curl https://raw.github.com/deanperry/onelineserver/master/railsready-ruby192-rvm.sh >> railsready-ruby192-rvm.sh && chmod a+x railsready-ruby192-rvm.sh && ./railsready-ruby192-rvm.sh
+* This will install Ruby using RVM
+* If you want to watch the magic happen run "tail -f ~/railsready-ruby192-rvm/install.log"
+
+###Ruby 1.9.3 RVM
+    sudo apt-get -y install curl && curl https://raw.github.com/deanperry/onelineserver/master/railsready-ruby193-rvm.sh >> railsready-ruby193-rvm.sh && chmod a+x railsready-ruby193-rvm.sh && ./railsready-ruby193-rvm.sh
+* This will install Ruby using RVM
+* If you want to watch the magic happen run "tail -f ~/railsready-ruby193-rvm/install.log"
+
 
 ##What this gives you:
 
