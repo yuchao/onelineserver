@@ -16,22 +16,6 @@ sudo -v >/dev/null 2>&1 || { echo $(whoami) has no sudo privileges ; exit 1; }
 
 echo "This script installs Ruby 1.9.3p0 along with the latest version of Apache, PHP, MySQL Server, Imagemagick, Git, Rails, Bundler and Passenger "
 
-# Ask if you want to build Ruby or install RVM
-echo "Build Ruby or install RVM?"
-echo "1. Build from souce"
-echo "2. Install RVM"
-echo -n "Select your Ruby type [1 or 2]? "
-read whichRuby
-
-if [ $whichRuby -eq 1 ] ; then
-  echo "Will build Ruby from source and install system wide"
-elif [ $whichRuby -eq 2 ] ; then
-  echo "Will install RVM for this user"
-else
-  echo "Must choose to build Ruby or install RVM, exiting..."
-  exit 1
-fi
-
 echo "Creating install dir..."
 cd && mkdir -p railsready-ruby193/src && cd railsready-ruby193 && touch install.log
 echo "done.."
@@ -91,40 +75,16 @@ echo "Installing prerequisites for the Passenger Apache2 Module"
 sudo apt-get install -y libcurl4-openssl-dev apache2-prefork-dev libapr1-dev >> install.log
 echo "done..."
 
-
-if [ $whichRuby -eq 1 ] ; then
-  # Install Ruby
-  echo "Downloading Ruby 1.9.3p0"
-  cd src && wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p0.tar.gz
-  echo "done..."
-  echo "Extracting Ruby 1.9.3p0"
-  tar -xzf ruby-1.9.3-p0.tar.gz >> ~/railsready-ruby193/install.log
-  echo "done..."
-  echo "Building Ruby 1.9.3p0 (this may take awhile and build output may appear on screen)..."
-  cd  ruby-1.9.3-p0 && ./configure --prefix=/usr/local >> ~/railsready-ruby193/install.log && make >> ~/railsready-ruby193/install.log && sudo make install >> ~/railsready-ruby193/install.log
-  echo "done..."
-elif [ $whichRuby -eq 2 ] ; then
-  #thanks wayneeseguin :)
-  echo "Installing RVM the Ruby environment Manager http://rvm.beginrescueend.com/rvm/install/"
-  curl -O -L http://rvm.beginrescueend.com/releases/rvm-install-head
-  chmod +x rvm-install-head
-  "$PWD/rvm-install-head" >> ~/railsready-ruby193/install.log
-  [[ -f rvm-install-head ]] && rm -f rvm-install-head
-  echo "Setting up RVM to load with new shells."
-  echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> "$HOME/.bashrc"
-  echo "=> Loading RVM"
-  source ~/.rvm/scripts/rvm
-  source ~/.bashrc
-  echo "Installing Ruby 1.9.3 (this will take awhile)"
-  echo "More information about installing rubies can be found at http://rvm.beginrescueend.com/rubies/installing/"
-  rvm install 1.9.3 >> ~/railsready-ruby193/install.log
-  echo "Using 1.9.3 and setting it as default for new shells"
-  echo "More information about Rubies can be found at http://rvm.beginrescueend.com/rubies/default/"
-  rvm --default use 1.9.3
-else
-  echo "How did you even get here?"
-  exit 1
-fi
+# Install Ruby
+echo "Downloading Ruby 1.9.3p0"
+cd src && wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p0.tar.gz
+echo "done..."
+echo "Extracting Ruby 1.9.3p0"
+tar -xzf ruby-1.9.3-p0.tar.gz >> ~/railsready-ruby193/install.log
+echo "done..."
+echo "Building Ruby 1.9.3p0 (this may take awhile and build output may appear on screen)..."
+cd  ruby-1.9.3-p0 && ./configure --prefix=/usr/local >> ~/railsready-ruby193/install.log && make >> ~/railsready-ruby193/install.log && sudo make install >> ~/railsready-ruby193/install.log
+echo "done..."
 
 # Reload bash
 echo "Reloading bashrc so ruby and rubygems are available..."
@@ -132,11 +92,7 @@ source ~/.bashrc
 echo "done..."
 
 echo "Installing Bundler, Passenger and Rails.."
-if [ $whichRuby -eq 1 ] ; then
-  sudo gem install bundler passenger rails --no-ri --no-rdoc >> ~/railsready-ruby193/install.log
-elif [ $whichRuby -eq 2 ] ; then
-  gem install bundler passenger rails --no-ri --no-rdoc >> ~/railsready-ruby193/install.log
-fi
+sudo gem install bundler passenger rails --no-ri --no-rdoc >> ~/railsready-ruby193/install.log
 echo "done..."
 
 echo "Installation is complete!"
