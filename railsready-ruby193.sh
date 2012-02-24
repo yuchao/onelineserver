@@ -52,9 +52,13 @@ echo "Installing libs needed for sqlite and mysql..."
 sudo apt-get -y install libsqlite3-0 sqlite3 libsqlite3-dev libmysqlclient16-dev libmysqlclient16 >> install.log
 echo "done..."
 
-echo "Installing MySQL server (you will be prompted for to provide a password for your MySQL root user)"
+echo "Installing MySQL server with the default password of Passw0rd"
+sudo chmod 777 -R /var/cache/debconf
+echo "mysql-server-5.1 mysql-server/root_password password Passw0rd" | debconf-set-selections
+echo "mysql-server-5.1 mysql-server/root_password_again password Passw0rd" | debconf-set-selections
 sudo apt-get -y install mysql-server mysql-client
 echo "done..."
+
 
 echo "Setting up PHP and Apache to work with MySQL..."
 sudo apt-get -y install libapache2-mod-auth-mysql php5-mysql >> install.log
