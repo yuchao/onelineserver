@@ -103,7 +103,8 @@ cd /tmp
 source ~/.bashrc
 
 # Install Bundler and Passenger
-sudo /usr/local/bin/gem install bundler passenger --no-ri --no-rdoc
+sudo /usr/local/bin/gem install bundler --no-ri --no-rdoc
+sudo /usr/local/bin/gem install passenger -v 3.0.11 --no-ri --no-rdoc
 
 # Add default Apache site and set DocumentRoot as /vagrant
 sudo chmod 777 /etc/apache2/sites-available/default
@@ -122,16 +123,11 @@ EOF
 yes '' | sudo /usr/local/bin/passenger-install-apache2-module
 
 # Add the Passenger config to /etc/apache2/httpd.conf
-# sudo cat > /etc/apache2/httpd.conf << HTTPD_CONF
-# <VirtualHost *:80>
-# 	ServerName `hostname`
-# 	DocumentRoot /var/www/public
-# 	<Directory /var/www/public>
-# 		AllowOverride all
-# 		Options -MultiViews
-# 	</Directory>
-# </VirtualHost>
-# HTTPD_CONF
+sudo cat > /etc/apache2/httpd.conf << HTTPD_CONF
+LoadModule passenger_module /usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.11/ext/apache2/mod_passenger.so
+PassengerRoot /usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.11
+PassengerRuby /usr/local/bin/ruby
+HTTPD_CONF
 
 # Link mysqld.sock to /tmp/mysql.sock
 ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock
