@@ -4,9 +4,10 @@
 # It has been modified by deanperry for his own use and for using with Vagrant as a provisioner
 #
 
-TIMEZONE="Europe/London"  
+TIMEZONE="Europe/London"
 SOURCES="https://raw.github.com/gist/1745922"
 # GB - https://raw.github.com/gist/1745922
+RUBY_VER="1.9.3-p125"
 
 
 
@@ -17,7 +18,7 @@ set -e
 # Check if the user has sudo privileges.
 sudo -v >/dev/null 2>&1 || { echo $(whoami) has no sudo privileges ; exit 1; }
 
-echo "This script installs Ruby 1.9.3-p125 along with the latest version of Apache, PHP, MySQL Server, Imagemagick, Git, Rails, Bundler and Passenger"
+echo "This script installs Ruby ${RUBY_VER} along with the latest version of Apache, PHP, MySQL Server, Imagemagick, Git, Rails, Bundler and Passenger"
 
 # Set localtime as Europe/London
 # /etc/timezone is chmoded as 777 because of
@@ -83,10 +84,10 @@ make
 sudo make install
 cd /tmp
 
-# Install Ruby 1.9.3-p125 to /usr/local
-curl http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p125.tar.gz --O /tmp/ruby-1.9.3-p125.tar.gz
-cd /tmp && tar -xzf /tmp/ruby-1.9.3-p125.tar.gz
-cd ruby-1.9.3-p125
+# Install Ruby to /usr/local
+curl http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-${RUBY_VER}.tar.gz --O /tmp/ruby-${RUBY_VER}.tar.gz
+cd /tmp && tar -xzf /tmp/ruby-${RUBY_VER}.tar.gz
+cd ruby-${RUBY_VER}
 ./configure --prefix=/usr/local
 make
 sudo make install
@@ -140,6 +141,6 @@ sudo /etc/init.d/apache2 restart
 # Clean up downloaded files in /tmp
 sudo rm -rf /tmp/yaml-0.1.4*
 sudo rm -rf /tmp/rubygems-1.8.15*
-sudo rm -rf /tmp/ruby-1.9.3-p125*
+sudo rm -rf /tmp/ruby-${RUBY_VER}*
 
 echo "Installation is complete!"
