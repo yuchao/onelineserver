@@ -83,7 +83,7 @@ make
 sudo make install
 cd /tmp
 
-# Install Ruby 1.9.3-p125 to /opt/ruby overwriting
+# Install Ruby 1.9.3-p125 to /usr/local
 curl http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p125.tar.gz --O /tmp/ruby-1.9.3-p125.tar.gz
 cd /tmp && tar -xzf /tmp/ruby-1.9.3-p125.tar.gz
 cd ruby-1.9.3-p125
@@ -119,7 +119,7 @@ sudo cat > /etc/apache2/sites-available/default << EOF
 EOF
 
 # Install and setup the Apache Passenger Module
-yes '' | sudo /opt/ruby/bin/passenger-install-apache2-module
+yes '' | sudo /usr/local/bin/passenger-install-apache2-module
 
 # Add the Passenger config to /etc/apache2/httpd.conf
 # sudo cat > /etc/apache2/httpd.conf << HTTPD_CONF
