@@ -44,7 +44,9 @@ libffi-dev libffi-ruby
 
 # Install apache2
 sudo apt-get -y install apache2
+sudo mkdir -p /var/www/public
 sudo chmod 777 /var/www/index.html && sudo echo "Hello, I am server `hostname`" > /var/www/index.html
+sudo chmod 777 /var/www/public/index.html && sudo echo "Hello, I am server `hostname` in /var/www/public/" > /var/www/public/index.html
 
 # Install PHP5
 sudo apt-get -y install php5 php5-cli
@@ -104,12 +106,6 @@ source ~/.bashrc
 
 # Install Bundler and Passenger
 sudo /usr/local/bin/gem install bundler passenger --no-ri --no-rdoc
-
-# Create default index page in /var/www/public
-sudo mkdir -p /var/www/public
-sudo cat > /var/www/public/index.html << INDEX_HTML
-<h1>This is `hostname`<h1>
-INDEX_HTML
 
 # Add default Apache site and set DocumentRoot as /vagrant
 sudo chmod 777 /etc/apache2/sites-available/default
