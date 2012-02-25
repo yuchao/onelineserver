@@ -1,8 +1,7 @@
 #!/bin/bash
 #
 # This script was originally from https://github.com/joshfng/railsready
-# It has been modified by deanperry for his own use and for 
-# using with Vagrant as a provisioner
+# It has been modified by deanperry for his own use and for using with Vagrant as a provisioner
 #
 
 TIMEZONE="Europe/London"  
@@ -18,7 +17,7 @@ set -e
 # Check if the user has sudo privileges.
 sudo -v >/dev/null 2>&1 || { echo $(whoami) has no sudo privileges ; exit 1; }
 
-echo "This script installs Ruby 1.9.3p0 along with the latest version of Apache, PHP, MySQL Server, Imagemagick, Git, Rails, Bundler and Passenger"
+echo "This script installs Ruby 1.9.3-p125 along with the latest version of Apache, PHP, MySQL Server, Imagemagick, Git, Rails, Bundler and Passenger"
 
 # Set localtime as Europe/London
 # /etc/timezone is chmoded as 777 because of
@@ -84,11 +83,10 @@ make
 sudo make install
 cd /tmp
 
-# Install Ruby 1.9.3-p0 to /opt/ruby overwriting
-# Vagrant's version - Ruby 1.8.7-p352 installed at /opt/ruby
-curl http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p0.tar.gz --O /tmp/ruby-1.9.3-p0.tar.gz
-cd /tmp && tar -xzf /tmp/ruby-1.9.3-p0.tar.gz
-cd ruby-1.9.3-p0
+# Install Ruby 1.9.3-p125 to /opt/ruby overwriting
+curl http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p125.tar.gz --O /tmp/ruby-1.9.3-p125.tar.gz
+cd /tmp && tar -xzf /tmp/ruby-1.9.3-p125.tar.gz
+cd ruby-1.9.3-p125
 ./configure --prefix=/usr/local
 make
 sudo make install
@@ -146,6 +144,6 @@ sudo /etc/init.d/apache2 restart
 # Clean up downloaded files in /tmp
 sudo rm -rf /tmp/yaml-0.1.4*
 sudo rm -rf /tmp/rubygems-1.8.15*
-sudo rm -rf /tmp/ruby-1.9.3-p0*
+sudo rm -rf /tmp/ruby-1.9.3-p125*
 
 echo "Installation is complete!"
