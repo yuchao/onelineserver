@@ -103,18 +103,116 @@ source ~/.bashrc
 sudo /usr/local/bin/gem install bundler --no-ri --no-rdoc
 # sudo /usr/local/bin/gem install passenger -v 3.0.11 --no-ri --no-rdoc
 
-# # Add default Apache site and set DocumentRoot as /vagrant
-# sudo chmod 777 /etc/apache2/sites-available/default
-# sudo cat > /etc/apache2/sites-available/default << EOF
-# <VirtualHost *:80>
-# 	ServerName `hostname`
-# 	DocumentRoot /var/www/public
-# 	<Directory /var/www/public>
-# 		AllowOverride all
-# 		Options -MultiViews
-# 	</Directory>
-# </VirtualHost>
-# EOF
+
+# Copy default nginx site and add new default nginx site
+# From http://ariejan.net/2011/09/14/lighting-fast-zero-downtime-deployments-with-git-capistrano-nginx-and-unicorn
+sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.orig
+sudo cat > /etc/nginx/sites-available/default << EOF
+upstream my_site {
+  # fail_timeout=0 means we always retry an upstream even if it failed
+  # to return a good HTTP response (in case the Unicorn master nukes a
+  # single worker for timing out).
+
+  # for UNIX domain socket setups:
+  server unix:/tmp/my_site.socket fail_timeout=0;
+}
+
+server {
+    # if you're running multiple servers, instead of "default" you should
+    # put your main domain name here
+    listen 80 default;
+
+    # you could put a list of other domain names this application answers
+    server_name my_site.example.com;
+
+    root /home/deployer/apps/my_site/current/public;
+    access_log /var/log/nginx/my_site_access.log;
+    rewrite_log on;
+
+    location / {
+        #all requests are sent to the UNIX socket
+        proxy_pass  http://my_site;
+        proxy_redirect     off;
+
+        proxy_set_header   Host             $host;
+        proxy_set_header   X-Real-IP        $remote_addr;
+        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+
+        client_max_body_size       10m;
+        client_body_buffer_size    128k;
+
+        proxy_connect_timeout      90;
+        proxy_send_timeout         90;
+        proxy_read_timeout         90;
+
+        proxy_buffer_size          4k;
+        proxy_buffers              4 32k;
+        proxy_busy_buffers_size    64k;
+        proxy_temp_file_write_size 64k;
+    }
+
+    # if the request is for a static resource, nginx should serve it directly
+    # and add a far future expires header to it, making the browser
+    # cache the resource and navigate faster over the website
+    # this probably needs some work with Rails 3.1's asset pipe_line
+    location ~ ^/(images|javascripts|stylesheets|system)/  {
+      root /home/deployer/apps/my_site/current/public;
+      expires max;
+      break;
+    }
+}
+EOF
+
+# Update nginx.conf file with optimized defaults
+# From http://ariejan.net/2011/09/14/lighting-fast-zero-downtime-deployments-with-git-capistrano-nginx-and-unicorn
+sudo cat > /etc/nginx/nginx.conf  << NGINX_CONF
+user deploy www-data;
+
+# Change this depending on your hardware
+worker_processes 4;
+pid /var/run/nginx.pid;
+
+events {
+    worker_connections 1024;
+    multi_accept on;
+}
+
+http {
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay off;
+    # server_tokens off;
+
+    # server_names_hash_bucket_size 64;
+    # server_name_in_redirect off;
+
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    gzip on;
+    gzip_disable "msie6";
+
+    # gzip_vary on;
+    gzip_proxied any;
+    gzip_min_length 500;
+    # gzip_comp_level 6;
+    # gzip_buffers 16 8k;
+    # gzip_http_version 1.1;
+    gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
+    ##
+    # Virtual Host Configs
+    ##
+
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+}
+NGINX_CONF
+
+
 
 # # Install and setup the Apache Passenger Module
 # yes '' | sudo /usr/local/bin/passenger-install-apache2-module
