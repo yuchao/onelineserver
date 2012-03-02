@@ -43,11 +43,11 @@ libxslt1-dev libxml2 libffi-dev libyaml-dev libxslt-dev autoconf libc6-dev libre
 libffi-dev libffi-ruby
 
 # Install python-software-properties
-sudo apt-get install python-software-properties
+sudo apt-get -y install python-software-properties
 nginx=stable # use nginx=development for latest development version
 sudo add-apt-repository ppa:nginx/$nginx
 sudo apt-get update 
-sudo apt-get install nginx
+sudo apt-get -y install nginx 
 
 # Start nginx
 sudo /etc/init.d/nginx start
