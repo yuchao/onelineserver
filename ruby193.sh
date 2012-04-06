@@ -85,6 +85,11 @@ cd rubygems-${RUBYGEMS_VER}
 sudo /usr/local/bin/ruby setup.rb
 cd /tmp
 
+# Install NodeJS
+sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get -y update
+sudo apt-get -y install nodejs
+
 # Reload bashrc
 source ~/.bashrc
 
@@ -121,6 +126,12 @@ ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock
 # Restart Apache
 sudo /etc/init.d/apache2 restart
 
+# Create deploy user with sudo priviledges
+sudo useradd deploy -m -d /opt/apps -s /bin/bash -G admin
+cd /opt/apps && sudo mkdir .ssh && sudo touch .ssh/authorized_keys
+sudo echo $user_ssh_key > /opt/apps/.ssh/authorized_keys
+sudo chown deploy:deploy /opt/apps/.ssh/ -R
+
 
 
 # Clean up downloaded files in /tmp
@@ -130,5 +141,5 @@ sudo rm -rf /tmp/ruby-${RUBY_VER}*
 
 echo "###############################################"
 echo "           Installation is complete!           "
-echo "   MySQL root password is ${MYSQL_ROOT_PASS}   "
+echo "      MySQL root password is ${MYSQL_ROOT_PASS}   "
 echo "###############################################"

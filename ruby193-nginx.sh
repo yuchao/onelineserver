@@ -13,7 +13,12 @@ set -e
 # Check if the user has sudo privileges.
 sudo -v >/dev/null 2>&1 || { echo $(whoami) has no sudo privileges ; exit 1; }
 
-echo "This script installs Ruby ${RUBY_VER} along with the latest version of Nginx, MySQL Server, ImageMagick, Git, Rails and Bundler"
+echo "This script installs Ruby ${RUBY_VER} and Rubygems ${RUBYGEMS_VER} along with the latest version of Nginx, MySQL Server, ImageMagick, Git, Rails and Bundler"
+
+# Ask for the user's public key for adding it to the deploy authorized_keys file
+echo "Please enter your SSH public key: "
+read user_ssh_key
+echo "Cool, continuing with the install..."
 
 # Install wget & curl before continuing
 sudo apt-get -y install wget curl
@@ -80,6 +85,11 @@ cd rubygems-${RUBYGEMS_VER}
 sudo /usr/local/bin/ruby setup.rb
 cd /tmp
 
+# Install NodeJS
+sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get -y update
+sudo apt-get -y install nodejs
+
 # Reload bashrc
 source ~/.bashrc
 
@@ -89,6 +99,11 @@ sudo /usr/local/bin/gem install bundler --no-ri --no-rdoc
 # Link mysqld.sock to /tmp/mysql.sock
 ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock
 
+# Create deploy user with sudo priviledges
+sudo useradd deploy -m -d /opt/apps -s /bin/bash -G admin
+cd /opt/apps && sudo mkdir .ssh && sudo touch .ssh/authorized_keys
+sudo echo $user_ssh_key > /opt/apps/.ssh/authorized_keys
+sudo chown deploy:deploy /opt/apps/.ssh/ -R
 
 
 # Clean up downloaded files in /tmp
@@ -98,5 +113,5 @@ sudo rm -rf /tmp/ruby-${RUBY_VER}*
 
 echo "###############################################"
 echo "           Installation is complete!           "
-echo "   MySQL root password is ${MYSQL_ROOT_PASS}   "
+echo "      MySQL root password is ${MYSQL_ROOT_PASS}   "
 echo "###############################################"
