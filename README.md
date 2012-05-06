@@ -1,6 +1,6 @@
 #One Line Server
 
-Run this on a fresh install. Tested on Ubuntu server 10.04 LTS & 10.10 & 11.10
+Run this on a fresh install. Tested on Ubuntu server 10.04, 10.10 & 11.10 & 12.04
 
 This script needs to be run under an account with `sudo` privileges.
 
@@ -9,7 +9,7 @@ This script needs to be run under an account with `sudo` privileges.
 ## Ruby 1.9.2-p318 & Rubygems 1.8.21
     sudo apt-get -y install curl && curl https://raw.github.com/deanperry/onelineserver/master/ruby/192.sh >> 192.sh && chmod a+x 192.sh && sudo ./192.sh
 
-## Ruby 1.9.3-p125 & Rubygems 1.8.21
+## Ruby 1.9.3-p194 & Rubygems 1.8.24
     sudo apt-get -y install curl && curl https://raw.github.com/deanperry/onelineserver/master/ruby/193.sh >> 193.sh && chmod a+x 193.sh && sudo ./193.sh
 
 ---
