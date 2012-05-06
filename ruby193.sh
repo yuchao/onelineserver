@@ -5,8 +5,8 @@
 
 
 MYSQL_ROOT_PASS="Passw0rd"
-RUBY_VER="1.9.3-p125"
-RUBYGEMS_VER="1.8.21"
+RUBY_VER="1.9.3-p194"
+RUBYGEMS_VER="1.8.24"
 
 shopt -s extglob
 set -e
