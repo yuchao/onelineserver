@@ -4,9 +4,14 @@ Run this on a fresh install. Tested on Ubuntu server 10.04, 10.10, 11.10 and 12.
 
 This script needs to be run under an account with `sudo` privileges.
 
+`curl` needs to be installed first. - `sudo apt-get install curl`
+
 ## Ruby 1.9.3
 
 ### Ruby 1.9.3-p194 & Rubygems 1.8.24
+
+	curl -L http://git.io/ols-193 | bash
+	
     sudo apt-get -y install curl && curl http://git.io/ols-193 >> 193.sh && chmod a+x 193.sh && sudo ./193.sh
 
 ### Ruby 1.9.3 - Nginx
@@ -31,3 +36,29 @@ This script was originally by [joshfng](https://github.com/joshfng/railsready), 
 Need a quicker installer for Ruby 1.9.3? Use the Brightbox apt-get repos by running this:
 
 	sudo apt-get -y install curl && curl http://git.io/ols-193-ag >> 193-ag.sh && chmod a+x 193-ag.sh && sudo ./193-ag.sh 
+	
+	
+	
+---
+
+## Experimental
+
+Some cool new scripts!
+
+### Apps
+
+OpenSSL, ImageMagick & Git
+
+	curl -L https://raw.github.com/deanperry/onelineserver/master/apps/openssl-imagemagick-git.sh | bash
+	
+nginx
+
+	curl -L https://raw.github.com/deanperry/onelineserver/master/apps/nginx.sh | bash
+	
+nodejs
+
+	https://raw.github.com/deanperry/onelineserver/master/apps/nodejs.sh | bash
+
+mysql
+
+	https://raw.github.com/deanperry/onelineserver/master/apps/mysql.sh | bash
