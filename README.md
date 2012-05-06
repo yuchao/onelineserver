@@ -49,11 +49,11 @@ Some cool new scripts!
 
 OpenSSL, ImageMagick & Git
 
-	curl -L https://raw.github.com/deanperry/onelineserver/master/apps/openssl-imagemagick-git.sh | bash
+	curl -L http://git.io/ols-a-oig | bash
 	
 nginx
 
-	curl -L https://raw.github.com/deanperry/onelineserver/master/apps/nginx.sh | bash
+	curl -L http://git.io/ols-a-n | bash
 	
 nodejs
 
