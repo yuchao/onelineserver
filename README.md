@@ -1,6 +1,9 @@
 #One Line Server
 
-Run this on a fresh install. Tested on Ubuntu server 10.04, 10.10, 11.10 and 12.04
+Run this on a fresh install. Tested on Ubuntu server 10.04, 10.10, 11.10.
+
+*There seems to be some problems with Ubuntu 12.04 so this script does not officially support it properly*
+*Please fork and send a pull request if you get it working properly :)*
 
 This script needs to be run under an account with `sudo` privileges.
 
