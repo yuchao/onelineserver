@@ -32,7 +32,12 @@ This script needs to be run under an account with `sudo` privileges.
 
 
 ## Ruby on Rails setup
-		sudo apt-get -y install curl && curl -L https://raw.github.com/deanperry/onelineserver/master/ruby_on_rails_setup.sh | bash
+
+### With MySQL
+		sudo apt-get -y install curl && curl -L https://raw.github.com/deanperry/onelineserver/master/rails-mysql.sh | bash
+
+### Without MySQL
+		sudo apt-get -y install curl && curl -L https://raw.github.com/deanperry/onelineserver/master/rails-no-mysql.sh | bash
 
 This script was originally by [joshfng](https://github.com/joshfng/railsready), modified by [danharper](https://github.com/danharper/onelineserver) and modified (complete rewrite) by me! :)
 
@@ -54,21 +59,25 @@ Some cool new scripts!
 
 nginx
 
-	curl -L https://raw.github.com/deanperry/onelineserver/master/apps/nginx.sh | bash
+	curl -L http://qyk.in/h4u | bash
 
 OpenSSL
 
-	curl -L https://raw.github.com/deanperry/onelineserver/master/apps/openssl.sh | bash
+	curl -L http://qyk.in/mtr | bash
 
 ImageMagick
 
-	curl -L https://raw.github.com/deanperry/onelineserver/master/apps/imagemagick.sh | bash
-	
+	curl -L http://qyk.in/e3i | bash
+
+Git
+
+	curl -L http://qyk.in/yhv | bash
+
 nodejs
 
-	https://raw.github.com/deanperry/onelineserver/master/apps/nodejs.sh | bash
+	curl -L http://qyk.in/98k | bash
 
 mysql
 
-	https://raw.github.com/deanperry/onelineserver/master/apps/mysql.sh | bash
+	curl -L http://qyk.in/68t | bash
 
