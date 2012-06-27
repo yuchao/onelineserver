@@ -34,10 +34,10 @@ This script needs to be run under an account with `sudo` privileges.
 ## Ruby on Rails setup
 
 ### With MySQL
-		sudo apt-get -y install curl && curl -L https://raw.github.com/deanperry/onelineserver/master/rails-mysql.sh | bash
+		sudo apt-get -y install curl && curl -L http://qyk.in/cqd | bash
 
 ### Without MySQL
-		sudo apt-get -y install curl && curl -L https://raw.github.com/deanperry/onelineserver/master/rails-no-mysql.sh | bash
+		sudo apt-get -y install curl && curl -L http://qyk.in/703 | bash
 
 This script was originally by [joshfng](https://github.com/joshfng/railsready), modified by [danharper](https://github.com/danharper/onelineserver) and modified (complete rewrite) by me! :)
 
