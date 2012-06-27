@@ -31,6 +31,9 @@ This script needs to be run under an account with `sudo` privileges.
     sudo apt-get -y install curl && curl http://qyk.in/7mi >> ruby192.sh && chmod a+x ruby192.sh && sudo ./ruby192.sh
 
 
+## Ruby on Rails setup
+		sudo apt-get -y install curl && curl -L https://raw.github.com/deanperry/onelineserver/master/ruby_on_rails_setup.sh | bash
+
 This script was originally by [joshfng](https://github.com/joshfng/railsready), modified by [danharper](https://github.com/danharper/onelineserver) and modified (complete rewrite) by me! :)
 
 
@@ -49,13 +52,17 @@ Some cool new scripts!
 
 ### Apps
 
-OpenSSL, ImageMagick & Git
-
-	curl -L http://qyk.in/e67 | bash
-	
 nginx
 
-	curl -L http://qyk.in/h4u | bash
+	curl -L https://raw.github.com/deanperry/onelineserver/master/apps/nginx.sh | bash
+
+OpenSSL
+
+	curl -L https://raw.github.com/deanperry/onelineserver/master/apps/openssl.sh | bash
+
+ImageMagick
+
+	curl -L https://raw.github.com/deanperry/onelineserver/master/apps/imagemagick.sh | bash
 	
 nodejs
 
@@ -64,3 +71,4 @@ nodejs
 mysql
 
 	https://raw.github.com/deanperry/onelineserver/master/apps/mysql.sh | bash
+
