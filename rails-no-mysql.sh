@@ -13,22 +13,22 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 # Run the Ruby 1.9.3 & Rubygems installer
-curl -L http://qyk.in/0mc | bash
+sudo curl -L http://qyk.in/0mc | bash
 
 # Run the nginx installer
-curl -L http://qyk.in/h4u | bash
+sudo curl -L http://qyk.in/h4u | bash
 
 # Run the OpenSSL installer
-curl -L http://qyk.in/mtr | bash
+sudo curl -L http://qyk.in/mtr | bash
 
 # Run the ImageMagick installer
-curl -L http://qyk.in/e3i | bash
+sudo curl -L http://qyk.in/e3i | bash
 
 # Run the git installer
-curl -L http://qyk.in/yhv | bash
+sudo curl -L http://qyk.in/yhv | bash
 
 # Run the nodejs installer
-curl -L http://qyk.in/98k | bash
+sudo curl -L http://qyk.in/98k | bash
 
 echo "###############################################"
 echo "###############################################"
