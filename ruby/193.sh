@@ -5,6 +5,7 @@
 
 RUBY_VER="1.9.3-p194"
 RUBYGEMS_VER="1.8.24"
+LIBYAML_VER="0.1.4"
 
 shopt -s extglob
 set -e
@@ -18,13 +19,22 @@ echo "This script installs Ruby ${RUBY_VER} and Rubygems ${RUBYGEMS_VER}"
 sudo apt-get update
 sudo apt-get upgrade -y
 
-# Install wget & curl before continuing
-sudo apt-get -y install wget curl
+# Install wget & python-software-properties before continuing
+sudo apt-get -y install wget python-software-properties
 
 # Install build tools
-sudo apt-get -y install wget curl build-essential bison openssl zlib1g zlib1g-dev libxslt1.1 libssl-dev \
+sudo apt-get -y install build-essential bison openssl zlib1g zlib1g-dev libxslt1.1 libssl-dev \
 libxslt1-dev libxml2 libffi-dev libyaml-dev libxslt-dev autoconf libc6-dev libreadline6-dev zlib1g-dev \
 libffi-dev libffi-ruby
+
+# Install libyaml
+curl http://pyyaml.org/download/libyaml/yaml-${LIBYAML_VER}.tar.gz --O /tmp/yaml-${LIBYAML_VER}.tar.gz
+cd /tmp && tar -xzf /tmp/yaml-${LIBYAML_VER}.tar.gz
+cd yaml-${LIBYAML_VER}
+./configure --prefix=/usr/local
+make
+sudo make install
+cd /tmp
 
 # Install Ruby to /usr/local
 curl http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-${RUBY_VER}.tar.gz --O /tmp/ruby-${RUBY_VER}.tar.gz
@@ -45,7 +55,8 @@ cd /tmp
 # Clean up downloaded files in /tmp
 sudo rm -rf /tmp/rubygems-${RUBYGEMS_VER}*
 sudo rm -rf /tmp/ruby-${RUBY_VER}*
+sudo rm -rf /tmp/yaml-${LIBYAML_VER}*
 
 echo "###############################################"
-echo "           Installation is complete!           "
+echo "      Ruby 1.9.3 installation is complete!     "
 echo "###############################################"
