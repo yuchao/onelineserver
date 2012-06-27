@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>One Line Server by deanperry</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>One Line Server</h1>
+        <p>A setup script to get Ruby on Rails running on Ubuntu Server in one line</p>
+
+        <p class="view"><a href="https://github.com/deanperry/onelineserver">View the Project on GitHub <small>deanperry/onelineserver</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/deanperry/onelineserver/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/deanperry/onelineserver/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/deanperry/onelineserver">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>One Line Server</h1>
+
+<p>Run this on a fresh install. Tested on Ubuntu server 10.04, 10.10, 11.10, 12.04.</p>
+
+<p>This script needs to be run under an account with <code>sudo</code> privileges.</p>
+
+<p><code>curl</code> needs to be installed first. - <code>sudo apt-get install curl</code></p>
+
+<p>This script was originally by <a href="https://github.com/joshfng/railsready">joshfng</a>, modified by <a href="https://github.com/danharper/onelineserver">danharper</a> and modified (complete rewrite) by me! :)</p>
+
+<h2>Ruby 1.9.3</h2>
+
+<h3>Ruby 1.9.3-p194 &amp; Rubygems 1.8.24</h3>
+
+<pre><code>sudo curl -L http://qyk.in/0mc | bash
+</code></pre>
+
+<h2>Ruby on Rails setup</h2>
+
+<p>Installs Ruby 1.9.3, Rubygems, nginx, OpenSSL, ImageMagick, Git &amp; nodejs</p>
+
+<h3>With MySQL</h3>
+
+<pre><code>curl -L http://qyk.in/cqd | bash
+</code></pre>
+
+<h3>Without MySQL</h3>
+
+<pre><code>curl -L http://qyk.in/703 | bash
+</code></pre>
+
+<h3>Ruby 1.9.3 apt-get</h3>
+
+<p>Need a quicker installer for Ruby 1.9.3? Use the Brightbox apt-get repos by running this:</p>
+
+<pre><code>curl -L http://qyk.in/h9w | bash
+</code></pre>
+
+<hr><h3>Ruby 1.9.2</h3>
+
+<p>I'm not really updating the 1.9.2 install files. If you have problems with them, please fork, fix and create a pull request :)</p>
+
+<h4>Ruby 1.9.2-p318 &amp; Rubygems 1.8.21</h4>
+
+<pre><code>sudo apt-get -y install curl &amp;&amp; curl http://qyk.in/sfq &gt;&gt; 192.sh &amp;&amp; chmod a+x 192.sh &amp;&amp; sudo ./192.sh
+</code></pre>
+
+<h4>Ruby 1.9.2 - Apache</h4>
+
+<pre><code>sudo apt-get -y install curl &amp;&amp; curl http://qyk.in/7mi &gt;&gt; ruby192.sh &amp;&amp; chmod a+x ruby192.sh &amp;&amp; sudo ./ruby192.sh
+</code></pre>
+
+<hr>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/deanperry">deanperry</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
