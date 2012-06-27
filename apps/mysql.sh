@@ -10,7 +10,7 @@ sudo -v >/dev/null 2>&1 || { echo $(whoami) has no sudo privileges ; exit 1; }
 
 
 # Install libs needed for sqlite and mysql
-sudo apt-get -y install libsqlite3-0 sqlite3 libsqlite3-dev libmysqlclient16-dev libmysqlclient16
+sudo apt-get -y install libsqlite3-0 sqlite3 libsqlite3-dev libmysqlclient-dev
 
 # Install MySQL server - default password is set as a variable at the top of this file
 sudo chmod 777 -R /var/cache/debconf # Probs not a good idea to chmod this as 777
